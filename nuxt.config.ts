@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   target: "static",
 
   app: {
-    baseURL: process.env.NODE_ENV === "production" ? "/telecom-awards-main/" : "/",
+    baseURL: process.env.NODE_ENV === "production" ? "/award/" : "/",
     buildAssetsDir: "assets",
   },
 
