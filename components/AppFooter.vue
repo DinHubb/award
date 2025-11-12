@@ -46,7 +46,7 @@
             </li>
             <li>
               <a
-                href="/#about"
+                href="award/#about"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 О премии
