@@ -7,6 +7,15 @@ export default defineNuxtConfig({
   css: ["./assets/css/main.css"],
   modules: ["nuxt-aos", "@nuxtjs/i18n"],
 
+  // Настройка для GitHub Pages
+  ssr: false,
+  target: "static",
+
+  app: {
+    baseURL: process.env.NODE_ENV === "production" ? "/telecom-awards-main/" : "/",
+    buildAssetsDir: "assets",
+  },
+
   aos: {
     once: true,
     disable: "phone",
