@@ -28,7 +28,7 @@
             {{ $t("nav.howToParticipate") }}
           </NuxtLink>
           <a
-            href="award/#about"
+            href="/#about"
             class="text-gray-300 hover:text-white transition-colors"
           >
             {{ $t("nav.about") }}
@@ -124,7 +124,7 @@
             {{ $t("nav.howToParticipate") }}
           </NuxtLink>
           <a
-            href="award/#about"
+            href="/#about"
             @click="closeMobileMenu"
             class="block px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-zinc-800 transition-colors"
           >
