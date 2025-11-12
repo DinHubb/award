@@ -155,7 +155,7 @@
                         alt="Feature 01"
                         class="w-full max-w-lg absolute bottom-0"
                         height="400"
-                        src="/images/feature-image-01.png"
+                        :src="getAssetPath('/images/feature-image-01.png')"
                         width="504"
                       />
                     </div>
@@ -202,7 +202,7 @@
                         alt="Feature 02"
                         class="w-full"
                         height="230"
-                        src="/images/feature-image-02.png"
+                        :src="getAssetPath('/images/feature-image-02.png')"
                         width="536"
                       />
                     </div>
@@ -249,7 +249,7 @@
                         alt="Feature 03"
                         class="w-full max-w-xs"
                         height="230"
-                        src="/images/feature-image-03.png"
+                        :src="getAssetPath('/images/feature-image-03.png')"
                         width="230"
                       />
                     </div>
@@ -375,6 +375,7 @@
 <script setup lang="ts">
 const particleCanvas = ref<HTMLCanvasElement | null>(null);
 const { initParticleAnimation } = useParticles();
+const { getAssetPath } = useAssetPath();
 
 onMounted(() => {
   if (particleCanvas.value) {

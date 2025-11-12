@@ -13,12 +13,12 @@
         <!-- Decorative elements -->
         <img
           class="absolute left-0 top-1/4 w-96 object-cover opacity-30 -z-5"
-          src="/images/white-background-abstract-with-wavy-line-gold-left.png"
+          :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
           alt=""
         />
         <img
           class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
-          src="/images/white-background-abstract-with-wavy-line-gold-right.png"
+          :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
           alt=""
         />
 
@@ -222,6 +222,9 @@ import type { Provider } from '~/composables/useProviders'
 
 // Use i18n
 const { locale, t } = useI18n()
+
+// Use asset path composable
+const { getAssetPath } = useAssetPath()
 
 // Use default layout
 definePageMeta({

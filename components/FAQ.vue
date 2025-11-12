@@ -8,12 +8,12 @@
     <!-- Decorative elements -->
     <img
       class="absolute left-0 top-1/4 w-96 object-cover opacity-30 -z-5"
-      src="/images/white-background-abstract-with-wavy-line-gold-left.png"
+      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
       alt=""
     />
     <img
       class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
-      src="/images/white-background-abstract-with-wavy-line-gold-right.png"
+      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
       alt=""
     />
 
@@ -341,6 +341,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+
+const { getAssetPath } = useAssetPath();
 
 interface FAQItem {
   question: string;

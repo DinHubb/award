@@ -2,12 +2,12 @@
   <section class="relative overflow-hidden">
     <img
       class="absolute -left-40 -top-16 w-xl object-cover z-10"
-      src="/images/white-background-abstract-with-wavy-line-gold-left.png"
+      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
       alt=""
     />
     <img
       class="absolute -right-40 -top-16 w-xl object-cover z-10"
-      src="/images/white-background-abstract-with-wavy-line-gold-right.png"
+      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
       alt=""
     />
 
@@ -30,7 +30,7 @@
             alt="Hero Illustration"
             class="max-w-none"
             height="774"
-            src="/images/glow-bottom.svg"
+            :src="getAssetPath('/images/glow-bottom.svg')"
             width="2146"
           />
         </div>
@@ -100,6 +100,7 @@ import { useParticles } from "~/composables/useParticles";
 
 const particleCanvas = ref<HTMLCanvasElement | null>(null);
 const { initParticleAnimation } = useParticles();
+const { getAssetPath } = useAssetPath();
 
 let cleanup: (() => void) | null = null;
 
