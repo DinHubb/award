@@ -27,12 +27,12 @@
           >
             {{ $t("nav.howToParticipate") }}
           </NuxtLink>
-          <a
-            href="/#about"
+          <NuxtLink
+            to="/#about"
             class="text-gray-300 hover:text-white transition-colors"
           >
             {{ $t("nav.about") }}
-          </a>
+          </NuxtLink>
           <NuxtLink
             to="/faq"
             class="text-gray-300 hover:text-white transition-colors"
@@ -45,12 +45,12 @@
         <!-- CTA Button & Language Switcher -->
         <div class="hidden md:flex items-center space-x-4">
           <AppLangSwitcher />
-          <a
-            href="/vote"
+          <NuxtLink
+            to="/vote"
             class="inline-flex items-center justify-center px-6 py-2 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-sm"
           >
             {{ $t("nav.vote") }}
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -141,12 +141,12 @@
           <div class="pt-2">
             <AppLangSwitcher />
           </div>
-          <a
-            href="/vote"
+          <NuxtLink
+            to="/vote"
             class="block px-3 py-2 rounded-lg text-center text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity"
           >
             {{ $t("nav.vote") }}
-          </a>
+          </NuxtLink>
         </nav>
       </div>
     </Transition>

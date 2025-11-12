@@ -2,12 +2,20 @@
   <section class="relative overflow-hidden">
     <img
       class="absolute -left-40 -top-16 w-xl object-cover z-10"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-left.png'
+        )
+      "
       alt=""
     />
     <img
       class="absolute -right-40 -top-16 w-xl object-cover z-10"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-right.png'
+        )
+      "
       alt=""
     />
 
@@ -68,8 +76,8 @@
             data-aos="fade-down"
             data-aos-delay="400"
           >
-            <a
-              href="/vote"
+            <NuxtLink
+              to="/vote"
               class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-lg"
             >
               Голосовать
@@ -85,7 +93,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>

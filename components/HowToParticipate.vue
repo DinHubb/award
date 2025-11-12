@@ -1,5 +1,8 @@
 <template>
-  <section id="how-to-participate" class="relative py-24 md:py-32 overflow-hidden">
+  <section
+    id="how-to-participate"
+    class="relative py-24 md:py-32 overflow-hidden"
+  >
     <!-- Background with gradient -->
     <div
       class="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black -z-10"
@@ -8,12 +11,20 @@
     <!-- Decorative elements -->
     <img
       class="absolute left-0 top-1/4 w-96 object-cover opacity-30 -z-5"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-left.png'
+        )
+      "
       alt=""
     />
     <img
       class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-right.png'
+        )
+      "
       alt=""
     />
 
@@ -27,7 +38,8 @@
         </h2>
         <div class="w-24 h-1 bg-gradient-gold mx-auto mb-6"></div>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-          Простая пошаговая инструкция для участия в Telecom Awards Tajikistan 2025
+          Простая пошаговая инструкция для участия в Telecom Awards Tajikistan
+          2025
         </p>
       </div>
 
@@ -139,7 +151,8 @@
                     <div class="w-2 h-2 rounded-full bg-gradient-gold"></div>
                   </div>
                   <span class="text-gray-300"
-                    >Следите за результатами голосования в реальном времени</span
+                    >Следите за результатами голосования в реальном
+                    времени</span
                   >
                 </li>
               </ul>
@@ -284,12 +297,12 @@
           >
             Зарегистрироваться
           </a>
-          <a
-            href="/vote"
+          <NuxtLink
+            to="/vote"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-white font-medium border-2 border-zinc-700 hover:border-zinc-500 transition-colors"
           >
             Начать голосование
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>

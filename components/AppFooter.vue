@@ -61,12 +61,12 @@
               </NuxtLink>
             </li>
             <li>
-              <a
-                href="/vote"
+              <NuxtLink
+                to="/vote"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 Голосовать
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
