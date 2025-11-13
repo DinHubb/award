@@ -1,13 +1,11 @@
 <template>
   <section
-    class="hero-section h-screen relative max-sm:pt-20 py-16 flex flex-col lg:overflow-hidden"
+    class="hero-section h-screen relative max-sm:pt-20 pt-16 flex flex-col lg:overflow-hidden"
   >
     <!-- Background Overlay in mobile resolution -->
     <div class="absolute inset-0 bg-black/60 lg:hidden"></div>
 
-    <div
-      class="app-container max-sm:mb-20 sm:flex-1 flex items-center justify-center"
-    >
+    <div class="app-container flex-1 flex items-center justify-center">
       <!-- Hero content -->
       <div class="flex flex-col items-center justify-center text-center z-10">
         <!-- Main heading -->
@@ -60,7 +58,7 @@
         </div>
       </div>
     </div>
-    <Clients class="py-10" />
+    <Clients class="mb-32" />
   </section>
 </template>
 
