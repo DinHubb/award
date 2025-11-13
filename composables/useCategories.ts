@@ -1,3 +1,5 @@
+import { categories as categoriesData } from '~/data/categories'
+
 export interface Category {
   id: string
   name_tj: string
@@ -7,27 +9,26 @@ export interface Category {
 export type CategoriesResponse = Category[]
 
 export const useCategories = () => {
-  const categories = useState<Category[]>('categories', () => [])
+  const categories = useState<Category[]>('categories', () => categoriesData)
   const isLoading = useState<boolean>('categories-loading', () => false)
   const error = useState<Error | null>('categories-error', () => null)
 
   /**
-   * Fetch all categories from API
+   * Load categories from inline data
    */
   const fetchCategories = async () => {
     isLoading.value = true
     error.value = null
 
     try {
-      const response = await $jwtFetch<CategoriesResponse>('/api/v1/categories', {
-        method: 'GET',
-      })
+      // Simulate async operation for consistency
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
-      categories.value = response
-      return response
+      categories.value = categoriesData
+      return categoriesData
     } catch (err) {
       error.value = err as Error
-      console.error('Error fetching categories:', err)
+      console.error('Error loading categories:', err)
       throw err
     } finally {
       isLoading.value = false
@@ -49,7 +50,7 @@ export const useCategories = () => {
   }
 
   /**
-   * Refresh categories (fetch again)
+   * Refresh categories (reload from data)
    */
   const refreshCategories = async () => {
     return fetchCategories()

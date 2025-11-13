@@ -1,3 +1,5 @@
+import { providers as providersData } from '~/data/providers'
+
 export interface Provider {
   id: string
   name_tj: string
@@ -8,12 +10,12 @@ export interface Provider {
 export type ProvidersResponse = Provider[]
 
 export const useProviders = () => {
-  const providers = useState<Provider[]>('providers', () => [])
+  const providers = useState<Provider[]>('providers', () => providersData)
   const isLoading = useState<boolean>('providers-loading', () => false)
   const error = useState<Error | null>('providers-error', () => null)
 
   /**
-   * Fetch providers from API
+   * Load providers from inline data
    * @param categoryId - Optional category ID to filter providers
    */
   const fetchProviders = async (categoryId?: string | null) => {
@@ -21,22 +23,22 @@ export const useProviders = () => {
     error.value = null
 
     try {
-      const params = new URLSearchParams()
+      // Simulate async operation for consistency
+      await new Promise((resolve) => setTimeout(resolve, 0))
+
+      let filteredProviders = providersData
+
       if (categoryId) {
-        params.append('category_id', categoryId)
+        filteredProviders = providersData.filter(
+          (provider) => provider.category_id === categoryId
+        )
       }
 
-      const url = `/api/v1/providers${params.toString() ? `?${params.toString()}` : ''}`
-
-      const response = await $jwtFetch<ProvidersResponse>(url, {
-        method: 'GET',
-      })
-
-      providers.value = response
-      return response
+      providers.value = filteredProviders
+      return filteredProviders
     } catch (err) {
       error.value = err as Error
-      console.error('Error fetching providers:', err)
+      console.error('Error loading providers:', err)
       throw err
     } finally {
       isLoading.value = false
@@ -65,7 +67,7 @@ export const useProviders = () => {
   }
 
   /**
-   * Refresh providers (fetch again)
+   * Refresh providers (reload from data)
    */
   const refreshProviders = async (categoryId?: string | null) => {
     return fetchProviders(categoryId)

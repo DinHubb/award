@@ -1,3 +1,5 @@
+import { criteria as criteriaData } from '~/data/criteria'
+
 export interface Criterion {
   id: string
   label_tj: string
@@ -8,12 +10,12 @@ export interface Criterion {
 export type CriteriaResponse = Criterion[]
 
 export const useCriteria = () => {
-  const criteria = useState<Criterion[]>('criteria', () => [])
+  const criteria = useState<Criterion[]>('criteria', () => criteriaData)
   const isLoading = useState<boolean>('criteria-loading', () => false)
   const error = useState<Error | null>('criteria-error', () => null)
 
   /**
-   * Fetch criteria from API
+   * Load criteria from inline data
    * @param categoryId - Optional category ID to filter criteria
    */
   const fetchCriteria = async (categoryId?: string | null) => {
@@ -21,22 +23,22 @@ export const useCriteria = () => {
     error.value = null
 
     try {
-      const params = new URLSearchParams()
+      // Simulate async operation for consistency
+      await new Promise((resolve) => setTimeout(resolve, 0))
+
+      let filteredCriteria = criteriaData
+
       if (categoryId) {
-        params.append('category_id', categoryId)
+        filteredCriteria = criteriaData.filter(
+          (criterion) => criterion.category_id === categoryId
+        )
       }
 
-      const url = `/api/v1/criteria${params.toString() ? `?${params.toString()}` : ''}`
-
-      const response = await $jwtFetch<CriteriaResponse>(url, {
-        method: 'GET',
-      })
-
-      criteria.value = response
-      return response
+      criteria.value = filteredCriteria
+      return filteredCriteria
     } catch (err) {
       error.value = err as Error
-      console.error('Error fetching criteria:', err)
+      console.error('Error loading criteria:', err)
       throw err
     } finally {
       isLoading.value = false
@@ -65,7 +67,7 @@ export const useCriteria = () => {
   }
 
   /**
-   * Refresh criteria (fetch again)
+   * Refresh criteria (reload from data)
    */
   const refreshCriteria = async (categoryId?: string | null) => {
     return fetchCriteria(categoryId)
