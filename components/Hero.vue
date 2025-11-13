@@ -6,7 +6,7 @@
     <div class="absolute inset-0 bg-black/60 lg:hidden"></div>
 
     <div
-      class="app-container max-sm:mb-40 sm:flex-1 flex items-center justify-center"
+      class="app-container max-sm:mb-16 sm:flex-1 flex items-center justify-center"
     >
       <!-- Hero content -->
       <div class="flex flex-col items-center justify-center text-center z-10">
