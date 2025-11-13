@@ -5,7 +5,9 @@
     <!-- Background Overlay in mobile resolution -->
     <div class="absolute inset-0 bg-black/60 lg:hidden"></div>
 
-    <div class="app-container flex-1 flex items-center justify-center">
+    <div
+      class="app-container max-sm:mb-40 sm:flex-1 flex items-center justify-center"
+    >
       <!-- Hero content -->
       <div class="flex flex-col items-center justify-center text-center z-10">
         <!-- Main heading -->
