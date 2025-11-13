@@ -1,35 +1,30 @@
 <template>
-  <section id="about" class="relative py-24 md:py-32 overflow-hidden">
-    <!-- Background with gradient -->
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black -z-10"
-    ></div>
-
+  <section id="about" class="relative pb-16 pt-20 md:py-24 overflow-hidden">
     <!-- Decorative elements -->
     <img
-      class="absolute left-0 top-1/4 w-96 object-cover opacity-30 -z-5"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
+      class="absolute left-0 top-1/4 w-96 object-cover opacity-30"
+      src="/images/white-background-abstract-with-wavy-line-gold-left.png"
       alt=""
     />
     <img
       class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
-      :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
+      src="/images/white-background-abstract-with-wavy-line-gold-right.png"
       alt=""
     />
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="app-container relative z-10">
       <!-- Section Title -->
-      <div class="text-center mb-16" data-aos="fade-up">
+      <div class="text-center mb-10 md:mb-16" data-aos="fade-up">
         <h2
           class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-gold-light mb-4"
         >
-          О премии
+          О нас
         </h2>
         <div class="w-24 h-1 bg-gradient-gold mx-auto"></div>
       </div>
 
       <!-- Main Content -->
-      <div class="space-y-12">
+      <div class="space-y-6">
         <!-- Main Description -->
         <div
           class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-zinc-800"
@@ -59,7 +54,7 @@
         </div>
 
         <!-- Two Column Layout -->
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-6">
           <!-- Organizer Block -->
           <div
             class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 border border-zinc-800"
@@ -242,5 +237,5 @@
 </template>
 
 <script setup lang="ts">
-const { getAssetPath } = useAssetPath();
+// Component logic can be added here if needed
 </script>

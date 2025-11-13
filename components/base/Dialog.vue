@@ -18,91 +18,95 @@
       </TransitionChild>
 
       <!-- Dialog container -->
-      <div class="fixed inset-0 flex items-center justify-center p-4">
-        <TransitionChild
-          as="template"
-          enter="transition duration-300 ease-out"
-          enter-from="opacity-0 scale-95"
-          enter-to="opacity-100 scale-100"
-          leave="transition duration-200 ease-in"
-          leave-from="opacity-100 scale-100"
-          leave-to="opacity-0 scale-95"
+      <div class="fixed inset-0 overflow-y-auto">
+        <div
+          class="flex min-h-full items-center justify-center p-4 text-center"
         >
-          <DialogPanel
-            class="relative w-full bg-zinc-900 rounded-3xl border-2 border-zinc-800 shadow-2xl overflow-hidden"
-            :class="sizeClass"
+          <TransitionChild
+            as="template"
+            enter="transition duration-300 ease-out"
+            enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100"
+            leave="transition duration-200 ease-in"
+            leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95"
           >
-            <!-- Close Button (optional) -->
-            <button
-              v-if="showClose"
-              type="button"
-              @click="handleClose"
-              class="absolute top-6 right-6 z-10 p-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-zinc-800/80 transition-all duration-300 hover:rotate-90 group"
-              aria-label="Close"
+            <DialogPanel
+              class="relative w-full bg-zinc-900 rounded-3xl border-2 border-zinc-800 shadow-2xl overflow-y-auto"
+              :class="sizeClass"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2.5"
-                stroke="currentColor"
-                class="w-6 h-6"
+              <!-- Close Button (optional) -->
+              <button
+                v-if="showClose"
+                type="button"
+                @click="handleClose"
+                class="absolute top-6 right-6 z-10 p-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-zinc-800/80 transition-all duration-300 hover:rotate-90 group"
+                aria-label="Close"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
 
-            <!-- Content slot -->
-            <div class="relative">
-              <slot />
-            </div>
-          </DialogPanel>
-        </TransitionChild>
+              <!-- Content slot -->
+              <div class="p-4 sm:p-8 md:p-10">
+                <slot />
+              </div>
+            </DialogPanel>
+          </TransitionChild>
+        </div>
       </div>
     </Dialog>
   </TransitionRoot>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 import {
   Dialog,
   DialogPanel,
   TransitionRoot,
   TransitionChild,
-} from '@headlessui/vue'
+} from "@headlessui/vue";
 
 interface Props {
-  isOpen: boolean
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
-  showClose?: boolean
+  isOpen: boolean;
+  size?: "sm" | "md" | "lg" | "xl" | "full";
+  showClose?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: 'md',
+  size: "md",
   showClose: false,
-})
+});
 
 const emit = defineEmits<{
-  close: []
-}>()
+  close: [];
+}>();
 
 const sizeClass = computed(() => {
   const sizes = {
-    sm: 'max-w-sm',
-    md: 'max-w-lg',
-    lg: 'max-w-2xl',
-    xl: 'max-w-4xl',
-    full: 'max-w-7xl',
-  }
-  return sizes[props.size]
-})
+    sm: "max-w-sm",
+    md: "max-w-lg",
+    lg: "max-w-2xl",
+    xl: "max-w-4xl",
+    full: "max-w-7xl",
+  };
+  return sizes[props.size];
+});
 
 const handleClose = () => {
-  emit('close')
-}
+  emit("close");
+};
 </script>

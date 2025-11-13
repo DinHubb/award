@@ -1,5 +1,5 @@
 <template>
-  <section id="features" class="relative overflow-hidden pt-32 pb-20">
+  <section id="features" class="relative overflow-hidden pb-16 pt-20 md:py-24">
     <!-- Background Video -->
     <video
       autoplay

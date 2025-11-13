@@ -29,7 +29,7 @@ const emit = defineEmits<{
         leave-to-class="transform scale-95 opacity-0"
       >
         <HeadlessMenuItems
-          class="absolute right-0 mt-2 origin-top-right divide-y divide-white/10 rounded-xl bg-white/10 backdrop-blur-md shadow-lg ring-1 ring-black/5 focus:outline-none"
+          class="absolute right-0 mt-2 origin-top-right divide-y divide-white/10 rounded-xl bg-white/10 backdrop-blur-md shadow-lg ring-1 ring-black/5 focus:outline-none min-w-[200px]"
         >
           <div class="px-1 py-1">
             <HeadlessMenuItem

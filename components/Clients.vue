@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div class="py-12">
+      <div>
         <div class="overflow-hidden">
           <div class="inline-flex flex-nowrap w-full clients-mask">
             <ul
@@ -20,7 +20,7 @@
             >
               <li v-for="i in 9" :key="i" class="mx-8">
                 <img
-                  :src="getAssetPath(`/images/client-0${i}.svg`)"
+                  :src="`/images/client-0${i}.svg`"
                   :alt="`Client ${i}`"
                   class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
@@ -32,7 +32,7 @@
             >
               <li v-for="i in 9" :key="`dup-${i}`" class="mx-8">
                 <img
-                  :src="getAssetPath(`/images/client-0${i}.svg`)"
+                  :src="`/images/client-0${i}.svg`"
                   :alt="`Client ${i}`"
                   class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
@@ -48,7 +48,6 @@
 <script setup lang="ts">
 const particleCanvas = ref<HTMLCanvasElement | null>(null);
 const { initParticleAnimation } = useParticles();
-const { getAssetPath } = useAssetPath();
 
 onMounted(() => {
   if (particleCanvas.value) {

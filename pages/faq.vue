@@ -1,29 +1,25 @@
 <template>
-  <div class="min-h-screen flex flex-col overflow-clip">
-    <!-- Spacer for fixed header -->
-    <div class="h-16"></div>
-
-    <main class="grow">
-      <FAQ />
-    </main>
-  </div>
+  <FAQ />
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 // Use default layout
 definePageMeta({
-  layout: 'default',
-})
+  layout: "default",
+});
 
 // Set page meta
 useHead({
-  title: 'Вопросы и ответы | Telecom Awards Tajikistan 2025',
+  title: t("faq.meta.title"),
   meta: [
     {
-      name: 'description',
-      content:
-        'Часто задаваемые вопросы о Telecom Awards Tajikistan 2025. Найдите ответы на вопросы о голосовании, участии и проведении премии.',
+      name: "description",
+      content: t("faq.meta.description"),
     },
   ],
-})
+});
 </script>

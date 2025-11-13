@@ -1,34 +1,21 @@
 <template>
   <section
     id="how-to-participate"
-    class="relative py-24 md:py-32 overflow-hidden"
+    class="relative pb-16 pt-20 md:py-24 overflow-hidden"
   >
-    <!-- Background with gradient -->
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black -z-10"
-    ></div>
-
     <!-- Decorative elements -->
     <img
-      class="absolute left-0 top-1/4 w-96 object-cover opacity-30 -z-5"
-      :src="
-        getAssetPath(
-          '/images/white-background-abstract-with-wavy-line-gold-left.png'
-        )
-      "
+      class="absolute left-0 top-1/4 w-96 object-cover opacity-30 z-0"
+      src="/images/white-background-abstract-with-wavy-line-gold-left.png"
       alt=""
     />
     <img
-      class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
-      :src="
-        getAssetPath(
-          '/images/white-background-abstract-with-wavy-line-gold-right.png'
-        )
-      "
+      class="absolute right-0 top-1/2 w-96 object-cover opacity-30 z-0"
+      src="/images/white-background-abstract-with-wavy-line-gold-right.png"
       alt=""
     />
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="app-container max-w-6xl relative z-10">
       <!-- Section Title -->
       <div class="text-center mb-16" data-aos="fade-up">
         <h2
@@ -297,12 +284,12 @@
           >
             Зарегистрироваться
           </a>
-          <NuxtLink
-            to="/vote"
+          <a
+            href="/vote"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-white font-medium border-2 border-zinc-700 hover:border-zinc-500 transition-colors"
           >
             Начать голосование
-          </NuxtLink>
+          </a>
         </div>
       </div>
     </div>
@@ -310,5 +297,5 @@
 </template>
 
 <script setup lang="ts">
-const { getAssetPath } = useAssetPath();
+// Component logic can be added here if needed
 </script>

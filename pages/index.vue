@@ -1,15 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col overflow-clip">
-    <main class="grow">
-      <Hero />
-
-      <AboutAward />
-
-      <HowToParticipate />
-
-      <FAQ />
-    </main>
-  </div>
+  <Hero />
 </template>
 
 <script setup lang="ts">

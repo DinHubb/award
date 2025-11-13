@@ -1,3 +1,50 @@
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from "vue";
+
+const { locale, locales, setLocale } = useI18n();
+
+const isDropdownOpen = ref(false);
+
+const availableLocales = computed(() => {
+  return locales.value.map((loc: any) => ({
+    code: loc.code,
+    name: loc.name,
+  }));
+});
+
+const currentLocaleName = computed(() => {
+  const current = availableLocales.value.find(
+    (loc) => loc.code === locale.value
+  );
+  return current?.name || "RU";
+});
+
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value;
+};
+
+const changeLocale = (code: any) => {
+  setLocale(code);
+  isDropdownOpen.value = false;
+};
+
+// Close dropdown when clicking outside
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  if (!target.closest(".relative")) {
+    isDropdownOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
+</script>
+
 <template>
   <div class="relative">
     <button
@@ -80,48 +127,3 @@
     </Transition>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-
-const { locale, locales, setLocale } = useI18n()
-
-const isDropdownOpen = ref(false)
-
-const availableLocales = computed(() => {
-  return locales.value.map((loc: any) => ({
-    code: loc.code,
-    name: loc.name,
-  }))
-})
-
-const currentLocaleName = computed(() => {
-  const current = availableLocales.value.find((loc) => loc.code === locale.value)
-  return current?.name || 'RU'
-})
-
-const toggleDropdown = () => {
-  isDropdownOpen.value = !isDropdownOpen.value
-}
-
-const changeLocale = (code: string) => {
-  setLocale(code)
-  isDropdownOpen.value = false
-}
-
-// Close dropdown when clicking outside
-const handleClickOutside = (event: MouseEvent) => {
-  const target = event.target as HTMLElement
-  if (!target.closest('.relative')) {
-    isDropdownOpen.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
-</script>

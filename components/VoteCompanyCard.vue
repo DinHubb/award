@@ -1,18 +1,18 @@
 <template>
   <div
-    class="group relative bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-300 cursor-pointer overflow-hidden"
+    class="group relative bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-300 overflow-hidden"
     :class="[
       'border-zinc-700/50',
       'hover:border-gold-500/60',
       'hover:shadow-2xl',
       'hover:shadow-gold-500/20',
       'hover:-translate-y-1',
-      'active:scale-98'
+      'active:scale-98',
     ]"
     @click="$emit('select')"
     role="button"
     tabindex="0"
-    :aria-label="`Голосовать за ${company.name}`"
+    :aria-label="`Голосовать за ${companyName}`"
     @keypress.enter="$emit('select')"
     @keypress.space.prevent="$emit('select')"
   >
@@ -24,7 +24,13 @@
     <!-- Spotlight effect -->
     <div
       class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      style="background: radial-gradient(circle at 50% 0%, rgba(203, 155, 81, 0.1), transparent 70%)"
+      style="
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(203, 155, 81, 0.1),
+          transparent 70%
+        );
+      "
     ></div>
 
     <div class="relative flex flex-col items-center text-center">
@@ -43,7 +49,7 @@
 
       <!-- Company Name -->
       <h3
-        class="text-2xl font-bold text-white mb-8 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-gold-light transition-all duration-300"
+        class="text-2xl font-bold text-white mb-8 group-hover:text-transparent group-hover:bg-clip-text cursor-default group-hover:bg-gradient-gold-light transition-all duration-300"
       >
         {{ companyName }}
       </h3>
@@ -51,11 +57,11 @@
       <!-- Vote Button -->
       <button
         type="button"
-        class="w-full px-6 py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg group-hover:shadow-xl relative overflow-hidden"
+        class="w-full cursor-pointer px-6 py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg group-hover:shadow-xl relative overflow-hidden"
         :class="[
           'bg-gradient-gold text-black',
           'group-hover:scale-105',
-          'group-hover:shadow-gold-500/30'
+          'group-hover:shadow-gold-500/30',
         ]"
         @click.stop="$emit('select')"
       >
@@ -78,7 +84,7 @@
               d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          {{ t('vote.voteButton') }}
+          {{ t("vote.voteButton") }}
         </span>
       </button>
     </div>
@@ -86,24 +92,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { Provider } from '~/composables/useProviders'
+import { computed } from "vue";
+import type { Provider } from "~/composables/useProviders";
 
 // Use i18n
-const { locale, t } = useI18n()
+const { locale, t } = useI18n();
 
 interface Props {
-  company: Provider
+  company: Provider;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 defineEmits<{
-  select: []
-}>()
+  select: [];
+}>();
 
 // Get company name based on locale
 const companyName = computed(() => {
-  return locale.value === 'tj' ? props.company.name_tj : props.company.name_ru
-})
+  return locale.value === "tj" ? props.company.name_tj : props.company.name_ru;
+});
 </script>

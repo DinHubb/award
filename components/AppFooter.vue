@@ -1,6 +1,6 @@
 <template>
-  <footer class="relative border-t border-zinc-800 bg-black">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+  <footer class="relative border-t border-zinc-800">
+    <div class="app-container py-10">
       <!-- Main Footer Content -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <!-- Logo and Description -->
@@ -45,12 +45,12 @@
               </NuxtLink>
             </li>
             <li>
-              <a
-                href="/#about"
+              <NuxtLink
+                to="/about"
                 class="text-gray-400 hover:text-white transition-colors"
               >
-                О премии
-              </a>
+                О нас
+              </NuxtLink>
             </li>
             <li>
               <NuxtLink
@@ -61,12 +61,12 @@
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink
-                to="/vote"
+              <a
+                href="/vote"
                 class="text-gray-400 hover:text-white transition-colors"
               >
                 Голосовать
-              </NuxtLink>
+              </a>
             </li>
           </ul>
         </div>

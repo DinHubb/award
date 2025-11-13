@@ -13,7 +13,7 @@ export interface VoteInitiateRequest {
 
 export interface VoteInitiateResponse {
   message: string
-  code: string
+  otp_code: string
   expires_in_minutes: number
 }
 

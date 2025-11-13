@@ -1,7 +1,10 @@
 <template>
   <AppHeader />
-  <main class="">
+  <main class="relative">
+    <!-- Particles animation -->
+    <ParticlesBackground />
+
     <slot></slot>
   </main>
-  <AppFooter />
+  <!-- <AppFooter /> -->
 </template>
