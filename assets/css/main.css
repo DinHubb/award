@@ -28,6 +28,29 @@
   }
 }
 
+@layer base {
+  html,
+  body {
+    font-family: "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia,
+      serif;
+    height: 100%;
+    line-height: 1;
+    background-color: black;
+  }
+
+  #__nuxt {
+    @apply min-h-full flex flex-col;
+  }
+
+  main {
+    @apply flex-auto;
+  }
+
+  .app-container {
+    @apply px-4 mx-auto lg:max-w-6xl 2xl:max-w-[1600px];
+  }
+}
+
 @utility bg-gradient-gold {
   background-image: linear-gradient(
     to right,
@@ -77,8 +100,4 @@
 
 [data-highlighter] > *::after {
   transform: translate(var(--mouse-x), var(--mouse-y));
-}
-
-body {
-  @apply bg-black;
 }

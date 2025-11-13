@@ -37,8 +37,8 @@
           data-aos="fade-down"
           data-aos-delay="400"
         >
-          <a
-            href="/vote"
+          <NuxtLink
+            to="/vote"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-lg"
           >
             Голосовать
@@ -54,7 +54,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>

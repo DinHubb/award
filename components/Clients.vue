@@ -20,7 +20,7 @@
             >
               <li v-for="i in 9" :key="i" class="mx-8">
                 <img
-                  :src="`/images/client-0${i}.svg`"
+                  :src="getImagePath(i)"
                   :alt="`Client ${i}`"
                   class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
@@ -32,7 +32,7 @@
             >
               <li v-for="i in 9" :key="`dup-${i}`" class="mx-8">
                 <img
-                  :src="`/images/client-0${i}.svg`"
+                  :src="getImagePath(i)"
                   :alt="`Client ${i}`"
                   class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
@@ -48,6 +48,11 @@
 <script setup lang="ts">
 const particleCanvas = ref<HTMLCanvasElement | null>(null);
 const { initParticleAnimation } = useParticles();
+const { getAssetPath } = useAssetPath();
+
+const getImagePath = (index: number) => {
+  return getAssetPath(`/images/client-0${index}.svg`);
+};
 
 onMounted(() => {
   if (particleCanvas.value) {

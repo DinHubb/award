@@ -46,12 +46,12 @@
         <!-- CTA Button & Language Switcher -->
         <div class="hidden lg:flex items-center space-x-4">
           <AppLangSwitcher />
-          <a
-            href="/vote"
+          <NuxtLink
+            to="/vote"
             class="inline-flex items-center justify-center px-6 py-2 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-sm"
           >
             {{ $t("nav.vote") }}
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -76,7 +76,10 @@
         </button>
 
         <!-- Mobile Menu Dialog -->
-        <MobileMenu :is-open="isMobileMenuOpen" @close="isMobileMenuOpen = false" />
+        <MobileMenu
+          :is-open="isMobileMenuOpen"
+          @close="isMobileMenuOpen = false"
+        />
       </div>
     </div>
   </header>

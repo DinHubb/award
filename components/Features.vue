@@ -8,7 +8,7 @@
       playsinline
       class="absolute inset-0 w-full h-full object-cover -z-10"
     >
-      <source src="/video/server_rack.mp4" type="video/mp4" />
+      <source :src="getAssetPath('/video/server_rack.mp4')" type="video/mp4" />
     </video>
 
     <!-- Black overlay with opacity -->
@@ -68,6 +68,7 @@
 <script setup lang="ts">
 const particleCanvas = ref<HTMLCanvasElement | null>(null);
 const { initParticleAnimation } = useParticles();
+const { getAssetPath } = useAssetPath();
 
 onMounted(() => {
   if (particleCanvas.value) {

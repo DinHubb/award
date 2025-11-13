@@ -6,12 +6,20 @@
     <!-- Decorative elements -->
     <img
       class="absolute left-0 top-1/4 w-96 object-cover opacity-30 z-0"
-      src="/images/white-background-abstract-with-wavy-line-gold-left.png"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-left.png'
+        )
+      "
       alt=""
     />
     <img
       class="absolute right-0 top-1/2 w-96 object-cover opacity-30 z-0"
-      src="/images/white-background-abstract-with-wavy-line-gold-right.png"
+      :src="
+        getAssetPath(
+          '/images/white-background-abstract-with-wavy-line-gold-right.png'
+        )
+      "
       alt=""
     />
 
@@ -278,18 +286,18 @@
           определить лучших операторов связи
         </p>
         <div class="flex justify-center gap-4 flex-wrap">
-          <a
-            href="/register"
+          <NuxtLink
+            to="/register"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity"
           >
             Зарегистрироваться
-          </a>
-          <a
-            href="/vote"
+          </NuxtLink>
+          <NuxtLink
+            to="/vote"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-white font-medium border-2 border-zinc-700 hover:border-zinc-500 transition-colors"
           >
             Начать голосование
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -297,5 +305,5 @@
 </template>
 
 <script setup lang="ts">
-// Component logic can be added here if needed
+const { getAssetPath } = useAssetPath();
 </script>

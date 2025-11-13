@@ -103,13 +103,13 @@ const closeMenu = () => {
               <!-- Mobile Language Switcher & CTA -->
               <div class="pt-4 border-t border-gray-800 space-y-4">
                 <AppLangSwitcher />
-                <a
-                  href="/vote"
+                <NuxtLink
+                  to="/vote"
                   class="inline-flex items-center justify-center w-full px-6 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   @click="closeMenu"
                 >
                   {{ $t("nav.vote") }}
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </DialogPanel>
