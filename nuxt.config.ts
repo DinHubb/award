@@ -17,8 +17,7 @@ export default defineNuxtConfig({
   },
 
   aos: {
-    once: true,
-    disable: "phone",
+    once: false,
     duration: 800,
     easing: "ease-out-cubic",
   },
