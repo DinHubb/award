@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <Clients class="mb-32" />
+    <Clients class="py-10" />
   </section>
 </template>
 
