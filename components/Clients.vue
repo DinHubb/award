@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div class="mb-16 sm:mb-10">
+      <div class="mb-28 sm:mb-10">
         <div class="overflow-hidden">
           <div class="inline-flex flex-nowrap w-full clients-mask">
             <ul
