@@ -1,9 +1,13 @@
 <template>
   <section
+    id="home"
     class="hero-section h-screen relative max-sm:pt-20 pt-16 flex flex-col lg:overflow-hidden"
   >
     <!-- Background Overlay in mobile resolution -->
     <div class="absolute inset-0 bg-black/60 lg:hidden"></div>
+
+    <!-- Particles animation -->
+    <ParticlesBackground />
 
     <div class="app-container flex-1 flex items-center justify-center">
       <!-- Hero content -->

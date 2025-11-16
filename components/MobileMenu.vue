@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { ref, onMounted, onUnmounted } from "vue";
 import {
   Dialog,
   DialogPanel,
@@ -8,8 +7,14 @@ import {
   TransitionChild,
 } from "@headlessui/vue";
 
+interface NavItem {
+  name: string;
+  sectionId: string;
+}
+
 interface Props {
   isOpen: boolean;
+  navItems: NavItem[];
 }
 
 const props = defineProps<Props>();
@@ -18,18 +23,65 @@ const emit = defineEmits<{
   close: [];
 }>();
 
-const { t } = useI18n();
-
-const menuItems = computed(() => [
-  { name: t("nav.home"), path: "/" },
-  { name: t("nav.howToParticipate"), path: "/how-to-participate" },
-  { name: t("nav.about"), path: "/about" },
-  { name: t("nav.faq"), path: "/faq" },
-]);
+const activeSectionId = ref<string>("home");
+const observer = ref<IntersectionObserver | null>(null);
 
 const closeMenu = () => {
   emit("close");
 };
+
+const scrollToSection = (sectionId: string) => {
+  activeSectionId.value = sectionId;
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const headerOffset = 80; // Высота header
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+  closeMenu();
+};
+
+const createObserver = () => {
+  const options: IntersectionObserverInit = {
+    root: null,
+    threshold: 0.25,
+  };
+
+  observer.value = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        if (entry.isIntersecting) {
+          activeSectionId.value = entry.target.id;
+        }
+      });
+    },
+    options
+  );
+
+  props.navItems.forEach((item) => {
+    const sectionEl: HTMLElement | null = document.getElementById(
+      item.sectionId
+    );
+    if (sectionEl) {
+      observer.value?.observe(sectionEl);
+    }
+  });
+};
+
+onMounted(() => {
+  createObserver();
+});
+
+onUnmounted(() => {
+  if (observer.value) {
+    observer.value.disconnect();
+  }
+});
 </script>
 
 <template>
@@ -49,25 +101,25 @@ const closeMenu = () => {
       </TransitionChild>
 
       <!-- Menu Panel -->
-      <div class="fixed inset-0 flex justify-end">
+      <div class="fixed inset-0 flex items-end p-4">
         <TransitionChild
           as="template"
           enter="transition ease-in-out duration-300 transform"
-          enter-from="translate-x-full"
-          enter-to="translate-x-0"
+          enter-from="translate-y-full"
+          enter-to="translate-y-0"
           leave="transition ease-in-out duration-300 transform"
-          leave-from="translate-x-0"
-          leave-to="translate-x-full"
+          leave-from="translate-y-0"
+          leave-to="translate-y-full"
         >
           <DialogPanel
-            class="relative w-full sm:max-w-sm overflow-y-auto bg-linear-to-br from-black via-gold-950/80 to-black backdrop-blur-xl border-l-2 border-gold-500/30 shadow-2xl shadow-gold-900/20"
+            class="relative w-full rounded-2xl bg-linear-to-br from-black via-gold-950/80 to-black backdrop-blur-xl border border-gold-500/30 overflow-hidden shadow-2xl shadow-gold-900/20"
           >
-            <div class="p-6 space-y-6 h-full flex flex-col">
+            <div class="p-6 space-y-3 h-full flex flex-col">
               <!-- Close Button -->
               <div class="flex justify-end">
                 <button
                   @click="closeMenu"
-                  class="p-2 text-gray-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-lg"
+                  class="p-1 text-gray-400 hover:text-white transition-colors outline-none focus-visible:ring-gold-500 rounded-lg"
                   aria-label="Close menu"
                 >
                   <svg
@@ -87,29 +139,33 @@ const closeMenu = () => {
               </div>
 
               <!-- Navigation Links -->
-              <nav class="flex flex-col space-y-4 flex-1">
-                <NuxtLink
-                  v-for="item in menuItems"
-                  :key="item.path"
-                  :to="item.path"
-                  class="block text-gray-300 hover:text-white transition-colors text-lg py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-lg px-2"
-                  activeClass="text-white font-medium"
-                  @click="closeMenu"
+              <nav class="flex flex-col space-y-1 flex-1">
+                <a
+                  v-for="item in navItems"
+                  :key="item.sectionId"
+                  :href="`#${item.sectionId}`"
+                  :class="[
+                    'block transition-colors text-lg py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-lg px-2',
+                    activeSectionId === item.sectionId
+                      ? 'text-white font-semibold'
+                      : 'text-gray-400 hover:text-gray-300',
+                  ]"
+                  @click.prevent="scrollToSection(item.sectionId)"
                 >
                   {{ item.name }}
-                </NuxtLink>
+                </a>
               </nav>
 
               <!-- Mobile Language Switcher & CTA -->
-              <div class="pt-4 border-t border-gray-800 space-y-4">
+              <div class="pt-4 border-t border-gray-500 space-y-4">
                 <AppLangSwitcher />
-                <NuxtLink
-                  to="/vote"
+                <a
+                  href="/vote"
                   class="inline-flex items-center justify-center w-full px-6 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   @click="closeMenu"
                 >
                   {{ $t("nav.vote") }}
-                </NuxtLink>
+                </a>
               </div>
             </div>
           </DialogPanel>

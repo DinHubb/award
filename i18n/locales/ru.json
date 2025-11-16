@@ -3,6 +3,7 @@
   "nav": {
     "home": "Главная",
     "howToParticipate": "Как участвовать",
+    "gallery": "Галерея",
     "about": "О нас",
     "faq": "Вопросы",
     "vote": "Голосовать"
@@ -100,5 +101,9 @@
       "title": "Вопросы и ответы | Telecom Awards Tajikistan 2025",
       "description": "Часто задаваемые вопросы о Telecom Awards Tajikistan 2025. Найдите ответы на вопросы о голосовании, участии и проведении премии."
     }
+  },
+  "gallery": {
+    "title": "Галерея событий",
+    "subtitle": "Фото и видеоархив прошедших церемоний и знаковых моментов Telecom Awards Tajikistan"
   }
 }
