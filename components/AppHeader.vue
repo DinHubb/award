@@ -133,7 +133,7 @@ onUnmounted(() => {
 });
 </script>
 <template>
-  <header class="fixed top-0 left-0 right-0 z-20 px-4">
+  <header class="fixed top-0 left-0 right-0 z-20 px-2">
     <div
       class="app-container rounded-2xl py-3 transition-all duration-300 ease-in-out"
       :class="{
