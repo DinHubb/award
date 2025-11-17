@@ -19,11 +19,13 @@
               class="flex items-center justify-start animate-infinite-scroll mx-8"
             >
               <li v-for="i in 9" :key="i" class="mx-8">
-                <img
-                  :src="getImagePath(i)"
-                  :alt="`Client ${i}`"
-                  class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
-                />
+                <div class="client-logo-wrapper">
+                  <img
+                    :src="getImagePath(i)"
+                    :alt="`Client ${i}`"
+                    class="max-w-none h-9 client-logo transition-opacity duration-300"
+                  />
+                </div>
               </li>
             </ul>
             <ul
@@ -31,11 +33,13 @@
               class="flex items-center justify-start animate-infinite-scroll mx-8"
             >
               <li v-for="i in 9" :key="`dup-${i}`" class="mx-8">
-                <img
-                  :src="getImagePath(i)"
-                  :alt="`Client ${i}`"
-                  class="max-w-none h-9 opacity-60 hover:opacity-100 transition-opacity duration-300"
-                />
+                <div class="client-logo-wrapper">
+                  <img
+                    :src="getImagePath(i)"
+                    :alt="`Client ${i}`"
+                    class="max-w-none h-9 client-logo transition-opacity duration-300"
+                  />
+                </div>
               </li>
             </ul>
           </div>
@@ -78,5 +82,22 @@ onMounted(() => {
     black calc(100% - 128px),
     transparent 100%
   );
+}
+
+.client-logo-wrapper {
+  display: inline-block;
+}
+
+.client-logo {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(33%) saturate(551%)
+    hue-rotate(359deg) brightness(102%) contrast(96%);
+  opacity: 0.6;
+  transition: all 300ms;
+}
+
+.client-logo-wrapper:hover .client-logo {
+  filter: brightness(0) saturate(100%) invert(95%) sepia(62%) saturate(1084%)
+    hue-rotate(305deg) brightness(104%) contrast(97%);
+  opacity: 1;
 }
 </style>
