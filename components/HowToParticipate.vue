@@ -42,7 +42,7 @@
       <div class="space-y-8">
         <!-- Step 1: Registration -->
         <div
-          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-zinc-800 relative"
+          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-gold-800/40 relative"
           data-aos="fade-right"
           data-aos-delay="100"
         >
@@ -99,7 +99,7 @@
 
         <!-- Step 2: Voting -->
         <div
-          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-zinc-800 relative"
+          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-gold-800/40 relative"
           data-aos="fade-left"
           data-aos-delay="200"
         >
@@ -157,7 +157,7 @@
 
         <!-- Step 3: Company Application -->
         <div
-          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-zinc-800 relative"
+          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-gold-800/40 relative"
           data-aos="fade-right"
           data-aos-delay="300"
         >
@@ -214,7 +214,7 @@
 
         <!-- Step 4: FAQ -->
         <div
-          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-zinc-800 relative"
+          class="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-gold-800/40 relative"
           data-aos="fade-left"
           data-aos-delay="400"
         >
@@ -272,7 +272,7 @@
 
       <!-- CTA Section -->
       <div
-        class="mt-16 text-center bg-black/40 backdrop-blur-sm rounded-3xl p-10 border border-zinc-800"
+        class="mt-16 text-center bg-black/40 backdrop-blur-sm rounded-3xl p-10 border border-gold-800/40"
         data-aos="fade-up"
         data-aos-delay="500"
       >
