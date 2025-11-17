@@ -134,11 +134,11 @@ onUnmounted(() => {
 });
 </script>
 <template>
-  <header class="fixed top-0 left-0 right-0 z-20">
+  <header class="fixed top-0 left-0 right-0 z-20 px-4">
     <div
-      class="app-container py-3 transition-all duration-300 ease-in-out"
+      class="app-container rounded-2xl py-3 transition-all duration-300 ease-in-out"
       :class="{
-        'mt-4 max-w-5xl rounded-2xl border border-gold-800/40  backdrop-blur-lg bg-background-header':
+        'mt-4 max-w-5xl  border border-gold-800/40  backdrop-blur-lg bg-background-header':
           isScrolled,
       }"
     >
