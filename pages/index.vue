@@ -1,9 +1,9 @@
 <template>
   <Hero />
-  <HowToParticipate />
   <AboutAward />
-  <Gallery />
+  <HowToParticipate />
   <FAQ />
+  <Gallery />
 </template>
 
 <script setup lang="ts">

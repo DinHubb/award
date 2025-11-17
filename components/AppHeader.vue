@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -7,13 +7,15 @@ const isMobileMenuOpen = ref(false);
 const navItemRefs = ref<(HTMLElement | null)[]>([]);
 const activeNavStyle = ref<any>("");
 const observer = ref<IntersectionObserver | null>(null);
+const isScrolled = ref(false);
+const currentActiveIndex = ref(0);
 
 const navItems = computed(() => [
   { name: t("nav.home"), sectionId: "home" },
-  { name: t("nav.howToParticipate"), sectionId: "how-to-participate" },
   { name: t("nav.about"), sectionId: "about" },
+  { name: t("nav.howToParticipate"), sectionId: "how-to-participate" },
+  // { name: t("nav.faq"), sectionId: "faq" },
   { name: t("nav.gallery"), sectionId: "gallery" },
-  { name: t("nav.faq"), sectionId: "faq" },
 ]);
 
 const setNavItemRef = (el: any, index: number) => {
@@ -29,6 +31,8 @@ onBeforeUpdate(() => {
 const updateHighlight = (index: number) => {
   const el = navItemRefs.value[index];
   if (!el) return; // Если элемент еще не отрисовался
+
+  currentActiveIndex.value = index; // Сохраняем текущий активный индекс
 
   activeNavStyle.value = {
     // Устанавливаем ширину подсветки = ширине пункта
@@ -95,23 +99,49 @@ const createObserver = () => {
   });
 };
 
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
+
+// Отслеживаем изменения в navItems (например, при смене языка)
+watch(navItems, async () => {
+  await nextTick(); // Ждем обновления DOM
+  // Небольшая задержка для корректного расчета размеров после рендера
+  setTimeout(() => {
+    updateHighlight(currentActiveIndex.value);
+  }, 50);
+});
+
 onMounted(() => {
   setTimeout(() => {
     updateHighlight(0);
   }, 0);
 
   createObserver();
+
+  // Добавляем обработчик скролла
+  window.addEventListener("scroll", handleScroll);
+  // Проверяем начальное состояние
+  handleScroll();
 });
 
 onUnmounted(() => {
   if (observer.value) {
     observer.value.disconnect();
   }
+  // Удаляем обработчик скролла при размонтировании
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 <template>
   <header class="fixed top-0 left-0 right-0 z-20">
-    <div class="app-container py-4">
+    <div
+      class="app-container py-3 transition-all duration-300 ease-in-out"
+      :class="{
+        'mt-4 max-w-5xl rounded-2xl border border-gold-800/40  backdrop-blur-lg bg-background-header':
+          isScrolled,
+      }"
+    >
       <div class="flex items-center justify-between">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center space-x-2">
@@ -148,12 +178,12 @@ onUnmounted(() => {
         <!-- CTA Button & Language Switcher -->
         <div class="hidden lg:flex items-center space-x-4">
           <AppLangSwitcher />
-          <a
+          <!-- <a
             href="/vote"
             class="inline-flex items-center justify-center px-6 py-2 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-sm"
           >
             {{ $t("nav.vote") }}
-          </a>
+          </a> -->
         </div>
 
         <!-- Mobile Menu Button -->
@@ -204,5 +234,13 @@ onUnmounted(() => {
   ); /* Золотой градиент */
   border: 1px solid rgba(212, 175, 55, 0.3);
   backdrop-filter: blur(5px);
+}
+
+.bg-background-header {
+  background-color: color-mix(
+    in oklab,
+    oklch(21.03% 0.006 285.89) 75%,
+    transparent
+  );
 }
 </style>

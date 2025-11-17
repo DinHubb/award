@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import {
+  Menu as HeadlessMenu,
+  MenuButton as HeadlessMenuButton,
+  MenuItems as HeadlessMenuItems,
+  MenuItem as HeadlessMenuItem,
+} from "@headlessui/vue";
+
 interface Props {
   items: any;
 }
@@ -14,7 +21,7 @@ const emit = defineEmits<{
     <HeadlessMenu as="div" class="relative inline-block text-left">
       <div>
         <HeadlessMenuButton
-          class="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 transition-colors"
+          class="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 transition-colors"
         >
           <slot name="name"></slot>
         </HeadlessMenuButton>
@@ -29,7 +36,7 @@ const emit = defineEmits<{
         leave-to-class="transform scale-95 opacity-0"
       >
         <HeadlessMenuItems
-          class="absolute right-0 mt-2 origin-top-right divide-y divide-white/10 rounded-xl bg-white/10 backdrop-blur-md shadow-lg ring-1 ring-black/5 focus:outline-none min-w-[200px]"
+          class="absolute right-0 mt-1 origin-top-right divide-y divide-white/10 rounded-xl bg-zinc-900 backdrop-blur-md shadow-lg outline-none focus:outline-none min-w-16"
         >
           <div class="px-1 py-1">
             <HeadlessMenuItem
@@ -40,7 +47,7 @@ const emit = defineEmits<{
               <button
                 :class="[
                   active ? 'bg-white/20 text-white' : 'text-white/90',
-                  'group flex w-full items-center rounded-lg px-3 py-2 text-sm transition-colors',
+                  'group flex w-full justify-center rounded-lg px-3 py-2 text-sm transition-colors',
                 ]"
                 @click="$emit('onClick', item)"
               >

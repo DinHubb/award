@@ -4,7 +4,7 @@
     class="relative pb-16 pt-20 md:py-24 overflow-hidden"
   >
     <!-- Decorative elements -->
-    <img
+    <!-- <img
       class="absolute left-0 top-1/4 w-96 object-cover opacity-30 z-0"
       :src="
         getAssetPath(
@@ -21,7 +21,7 @@
         )
       "
       alt=""
-    />
+    /> -->
 
     <div class="app-container max-w-6xl relative z-10">
       <!-- Section Title -->

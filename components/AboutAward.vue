@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="relative pb-16 pt-20 md:py-24 overflow-hidden">
     <!-- Decorative elements -->
-    <img
+    <!-- <img
       class="absolute left-0 top-1/4 w-96 object-cover opacity-30"
       :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-left.png')"
       alt=""
@@ -10,7 +10,7 @@
       class="absolute right-0 top-1/2 w-96 object-cover opacity-30 -z-5"
       :src="getAssetPath('/images/white-background-abstract-with-wavy-line-gold-right.png')"
       alt=""
-    />
+    /> -->
 
     <div class="app-container relative z-10">
       <!-- Section Title -->

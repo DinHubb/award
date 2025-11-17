@@ -1,15 +1,16 @@
 <template>
   <section
     id="home"
-    class="hero-section h-screen relative max-sm:pt-20 pt-16 flex flex-col lg:overflow-hidden"
+    class="hero-section relative h-screen flex flex-col max-sm:pt-20 pt-16 lg:overflow-hidden"
   >
     <!-- Background Overlay in mobile resolution -->
     <div class="absolute inset-0 bg-black/60 lg:hidden"></div>
-
     <!-- Particles animation -->
     <ParticlesBackground />
 
-    <div class="app-container flex-1 flex items-center justify-center">
+    <div
+      class="app-container flex-1 flex flex-col items-center justify-center relative z-10"
+    >
       <!-- Hero content -->
       <div class="flex flex-col items-center justify-center text-center z-10">
         <!-- Main heading -->
@@ -31,8 +32,7 @@
           data-aos="fade-down"
           data-aos-delay="200"
         >
-          Первая народная премия, где жители Таджикистана выбирают лучших
-          операторов и интернет-провайдеров
+          {{ $t("hero.description") }}
         </p>
 
         <!-- CTA Button -->
@@ -41,11 +41,11 @@
           data-aos="fade-down"
           data-aos-delay="400"
         >
-          <NuxtLink
-            to="/vote"
+          <a
+            href="/vote"
             class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-black font-medium bg-gradient-gold hover:opacity-90 transition-opacity text-lg"
           >
-            Голосовать
+            {{ $t("hero.voteButton") }}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -58,7 +58,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-          </NuxtLink>
+          </a>
         </div>
       </div>
     </div>
@@ -68,8 +68,8 @@
 
 <style scoped>
 .hero-section {
-  background-image: url("/images/white-background-abstract-with-wavy-line-gold-left.png"),
-    url("/images/white-background-abstract-with-wavy-line-gold-right.png");
+  background-image: url("/images/hero-bg-left.png"),
+    url("/images/hero-bg-right.png");
   background-position: left -10rem top 0, right -10rem top 0;
   background-repeat: no-repeat, no-repeat;
   background-size: contain;
