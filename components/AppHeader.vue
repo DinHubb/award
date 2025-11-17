@@ -58,7 +58,6 @@ const scrollToSection = (sectionId: string) => {
 
 const handleNavClick = (sectionId: string, index: number) => {
   scrollToSection(sectionId);
-  updateHighlight(index);
 };
 
 const createObserver = () => {
